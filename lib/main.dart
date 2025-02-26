@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:health_wallet/create_account/view/create_account_mobile.dart';
+=======
+import 'package:health_wallet/login/views/login_mobile.dart';
+>>>>>>> bbf351ab13df1f839911bb2080699a3648f699a5
 
 void main() {
   runApp(const MyApp());
@@ -31,7 +35,15 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
+<<<<<<< HEAD
       home: const CreateAccount(),
     );
   }
 }
+=======
+      home: LoginPage(),
+    );
+  }
+}
+
+>>>>>>> bbf351ab13df1f839911bb2080699a3648f699a5
