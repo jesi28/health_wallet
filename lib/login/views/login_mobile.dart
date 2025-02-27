@@ -89,18 +89,8 @@ class _LoginMobileState extends State<LoginMobile> {
                         ],
                       ),
                       SizedBox(height: 20),
-<<<<<<< HEAD
-                      ElevatedButton(
-                        onPressed: () {
-                          if (_formKey.currentState?.saveAndValidate() ?? false) {
-                          }
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
-                          padding: EdgeInsets.symmetric(horizontal: 100, vertical: 15),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-=======
+
+                     
                       SizedBox(
                         width: double.maxFinite,
                         height: MediaQuery.sizeOf(context).height * 0.06,
@@ -113,7 +103,6 @@ class _LoginMobileState extends State<LoginMobile> {
                                 ), // Rounded corners
                               ),
                             ),
->>>>>>> 90ce72ab0a9b710e01f8cb6d114cc8a3f4d21299
                           ),
                           onPressed: () {},
                           child: const Text('LOG IN '),
