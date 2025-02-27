@@ -1,49 +1,44 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
+import 'package:go_router/go_router.dart';
+import 'package:health_wallet/common/constants.dart';
+import 'package:health_wallet/common/ui_helper';
 import 'package:health_wallet/create_account/view/create_account_mobile.dart';
-=======
-import 'package:health_wallet/login/views/login_mobile.dart';
->>>>>>> bbf351ab13df1f839911bb2080699a3648f699a5
+import 'package:responsive_framework/responsive_framework.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+  final GoRouter _router = GoRouter(
+    initialLocation: '/account',
+    routes: [
+      GoRoute(
+        path: '/account',
+        builder: (context, state) => const CreateAccount(),
+      ),
+    ],
+  );
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    UiHelper uiHelper = UiHelper();
+    return MaterialApp.router(
+      builder:
+          (context, child) => ResponsiveBreakpoints.builder(
+            child: child!,
+            breakpoints: [
+              const Breakpoint(start: 375, end: 450, name: MOBILE),
+              const Breakpoint(start: 451, end: 800, name: TABLET),
+              const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+              const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+            ],
+          ),
+      routerConfig: _router,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-<<<<<<< HEAD
-      home: const CreateAccount(),
+      debugShowCheckedModeBanner: false,
+      theme: uiHelper.themeData(Constants.themeConfig.LIGHT),
     );
   }
 }
-=======
-      home: LoginPage(),
-    );
-  }
-}
-
->>>>>>> bbf351ab13df1f839911bb2080699a3648f699a5

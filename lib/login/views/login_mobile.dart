@@ -77,7 +77,6 @@ class LoginPage extends StatelessWidget {
                       ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState?.saveAndValidate() ?? false) {
-                            print('Form submitted successfully');
                           }
                         },
                         style: ElevatedButton.styleFrom(

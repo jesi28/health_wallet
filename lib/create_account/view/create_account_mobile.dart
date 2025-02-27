@@ -18,33 +18,98 @@ class _CreateAccountState extends State<CreateAccount> {
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: FormBuilder(
             onChanged: () {},
-            child: Column(
-              spacing: 10,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                IconButton(onPressed: () {}, icon: Icon(Icons.close)),
-                const SizedBox(height: 15),
-                Text(
-                  "Create an account",
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                    color: Theme.of(context).colorScheme.onSurface,
-                    fontWeight: FontWeight.w700,
+            child: SingleChildScrollView(
+              child: Column(
+                spacing: 18,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  IconButton(onPressed: () {}, icon: Icon(Icons.close)),
+                  const SizedBox(height: 15),
+                  SizedBox(height: 10),
+                  Text(
+                    "Create an account",
+                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                      color: Theme.of(context).colorScheme.onSurface,
+                      fontWeight: FontWeight.w700,
 
-                    fontSize: 22,
+                      fontSize: 22,
+                    ),
                   ),
-                ),
-                Text(
-                  "Securely login to your account",
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                    color: Theme.of(context).colorScheme.outline,
-                    fontWeight: FontWeight.w400,
+                  Text(
+                    "Securely login to your account",
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      color: Theme.of(context).colorScheme.outline,
+                      fontWeight: FontWeight.w400,
 
-                    fontSize: 14,
+                      fontSize: 14,
+                    ),
                   ),
-                ),
-                TextField(),
-              ],
+                  SizedBox(height: 10),
+                  TextFields(
+                    hintText: "Full Name",
+                    prefixImageURL: 'assets/Vector.png',
+                  ),
+                  TextFields(
+                    prefixImageURL: 'assets/mail.png',
+                    hintText: "Email address",
+                  ),
+                  TextFields(
+                    hintText: "Enter NUmber",
+                    prefixImageURL: 'assets/Vector.png',
+                  ),
+                  TextFields(
+                    hintText: "Password",
+                    prefixImageURL: 'assets/lock.png',
+                    suffixIcon: Icons.remove_red_eye_outlined,
+                  ),
+                  SizedBox(
+                    width: double.maxFinite,
+                    height: MediaQuery.sizeOf(context).height * 0.06,
+                    child: FilledButton(
+                      style: ButtonStyle(
+                        shape: WidgetStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                              10.0,
+                            ), // Rounded corners
+                          ),
+                        ),
+                      ),
+                      onPressed: () {},
+                      child: const Text('Create Account'),
+                    ),
+                  ),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+
+                    children: [
+                      Text(
+                        "I Already have an account?",
+                        style: Theme.of(
+                          context,
+                        ).textTheme.headlineSmall?.copyWith(
+                          color: Theme.of(context).colorScheme.outline,
+                          fontWeight: FontWeight.w400,
+
+                          fontSize: 14,
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "Log in",
+                          style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -53,46 +118,45 @@ class _CreateAccountState extends State<CreateAccount> {
   }
 }
 
-//
-class TextField extends StatelessWidget {
-  const TextField({
+class TextFields extends StatelessWidget {
+  const TextFields({
     super.key,
+
+    required this.prefixImageURL,
+    required this.hintText,
+    this.suffixIcon,
   });
 
+  final String prefixImageURL;
+  final IconData? suffixIcon;
+  final String hintText;
   @override
   Widget build(BuildContext context) {
     return FormBuilderTextField(
       keyboardType: TextInputType.emailAddress,
       validator:
-          (value) =>
-              value == null || value.isEmpty
-                  ? "Enter Full name"
-                  : null,
+          (value) => value == null || value.isEmpty ? "Enter Full name" : null,
       decoration: InputDecoration(
-        hintText: 'Full Name',
+        hintText: hintText,
         filled: true,
-        fillColor:
-            Theme.of(context).colorScheme.surfaceContainerLow,
+        fillColor: Theme.of(context).colorScheme.surfaceContainerHighest,
         hintStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
-          color: Theme.of(context).colorScheme.outlineVariant,
+          color: Theme.of(context).colorScheme.outline,
         ),
         prefixIcon: Padding(
-          padding: const EdgeInsets.all(
-            0.0,
-          ), // Adjust padding as needed
+          padding: const EdgeInsets.all(0.0), // Adjust padding as needed
           child: Image.asset(
-            'assets/Vector.png', // Replace with your image path
+            prefixImageURL, // Replace with your image path
             width: 16,
             height: 21,
           ),
         ),
+        suffixIcon: suffixIcon != null ? Icon(suffixIcon) : null,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
           borderSide: BorderSide.none,
         ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide.none,
-        ),
+        focusedBorder: OutlineInputBorder(borderSide: BorderSide.none),
       ),
       name: 'name',
     );
