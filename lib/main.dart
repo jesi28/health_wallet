@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 
 import 'package:go_router/go_router.dart';
 import 'package:health_wallet/common/constants.dart';
@@ -13,15 +14,19 @@ import 'package:health_wallet/login/views/login_mobile.dart';
 import 'package:health_wallet/splash_screen.dart/splash_screen_mobile.dart';
 
 import 'package:responsive_framework/responsive_framework.dart';
+=======
+
+
+>>>>>>> f44d08cdf7cfcd40d23ed61d128074303c8b3ba4
 
 void main() {
   runApp(MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
+<<<<<<< HEAD
   final GoRouter _router = GoRouter(
 
     initialLocation: '/verified',
@@ -71,5 +76,11 @@ class MyApp extends StatelessWidget {
       theme: uiHelper.themeData(Constants.themeConfig.DARK),
 
     );
+=======
+  @override
+  Widget build(BuildContext context) {
+   
+    return MaterialApp.router();
+>>>>>>> f44d08cdf7cfcd40d23ed61d128074303c8b3ba4
   }
 }
