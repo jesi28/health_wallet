@@ -1,79 +1,95 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:health_wallet/widget/form_field.dart';
 
-class LoginPage extends StatelessWidget {
+bool isChecked = false;
+
+class LoginMobile extends StatefulWidget {
+  const LoginMobile({super.key});
+
+  @override
+  State<LoginMobile> createState() => _LoginMobileState();
+}
+
+class _LoginMobileState extends State<LoginMobile> {
+  bool isChecked = false;
   final _formKey = GlobalKey<FormBuilderState>();
-
-  LoginPage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                IconButton(onPressed: () {}, icon: Icon(Icons.close)),
                 Text(
                   'Login',
-                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    color: Theme.of(context).colorScheme.onSurface,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 28,
+                  ),
                 ),
                 SizedBox(height: 10),
                 Text(
                   'Securely login to your account',
-                  style: TextStyle(fontSize: 16, color: Colors.grey),
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    color: Theme.of(context).colorScheme.outline,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14,
+                  ),
                 ),
                 SizedBox(height: 30),
                 FormBuilder(
                   key: _formKey,
                   child: Column(
                     children: [
-                      FormBuilderTextField(
-                        name: 'email',
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.email),
-                          labelText: 'Email',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                        keyboardType: TextInputType.emailAddress,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your email';
-                          }
-                          return null;
-                        },
+                      TextFields(
+                        hintText: 'Email address',
+                        prefixImageURL: "assets/mail.png",
                       ),
                       SizedBox(height: 15),
-                      FormBuilderTextField(
-                        name: 'password',
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.lock),
-                          suffixIcon: Icon(Icons.visibility),
-                          labelText: 'Password',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your password';
-                          }
-                          return null;
-                        },
+                      TextFields(
+                        hintText: 'Password',
+                        prefixImageURL: "assets/lock.png",suffixIcon: Icons.remove_red_eye_outlined,
                       ),
                       SizedBox(height: 10),
                       Row(
                         children: [
-                          Checkbox(value: false, onChanged: (value) {}),
-                          Text("Remember me"),
+                          GestureDetector(
+                            onTap: () {
+                              isChecked = !isChecked;
+                            },
+                            child: Radio(
+                              value: true,
+                              activeColor:
+                                  Theme.of(context).colorScheme.surface,
+
+                              groupValue: isChecked,
+                              onChanged: (value) {
+                                isChecked = value as bool;
+                              },
+                            ),
+                          ),
+                          Text(
+                            "Remember me",
+                            style: Theme.of(
+                              context,
+                            ).textTheme.headlineSmall?.copyWith(
+                              color: Theme.of(context).colorScheme.outline,
+                              fontWeight: FontWeight.w300,
+                              fontSize: 12,
+                            ),
+                          ),
                         ],
                       ),
                       SizedBox(height: 20),
+<<<<<<< HEAD
                       ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState?.saveAndValidate() ?? false) {
@@ -84,11 +100,23 @@ class LoginPage extends StatelessWidget {
                           padding: EdgeInsets.symmetric(horizontal: 100, vertical: 15),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
+=======
+                      SizedBox(
+                        width: double.maxFinite,
+                        height: MediaQuery.sizeOf(context).height * 0.06,
+                        child: FilledButton(
+                          style: ButtonStyle(
+                            shape: WidgetStateProperty.all(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                  10.0,
+                                ), // Rounded corners
+                              ),
+                            ),
+>>>>>>> 90ce72ab0a9b710e01f8cb6d114cc8a3f4d21299
                           ),
-                        ),
-                        child: Text(
-                          'LOG IN',
-                          style: TextStyle(fontSize: 18, color: Colors.white),
+                          onPressed: () {},
+                          child: const Text('LOG IN '),
                         ),
                       ),
                       SizedBox(height: 10),
@@ -96,44 +124,161 @@ class LoginPage extends StatelessWidget {
                         onPressed: () {},
                         child: Text(
                           'Forgot Password',
-                          style: TextStyle(color: Colors.blue),
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            decoration: TextDecoration.underline,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
                 SizedBox(height: 20),
-                Text('- OR Continue with -'),
+                Center(
+                  child: Text(
+                    '- OR Continue with -',
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      color: Theme.of(context).colorScheme.onSurface,
+                      fontWeight: FontWeight.w300,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
                 SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                  
-                    SizedBox(width: 20),
-                   
+                    SocialLoginButton(
+                      imagePath: 'assets/google.png',
+                      text: 'Google',
+                    ),
+                    SizedBox(width: 8),
+                    SocialLoginButton(
+                      imagePath: 'assets/facebook.png',
+                      text: 'Facebook',
+                    ),
                   ],
                 ),
                 SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Create An Account '),
+                    Text(
+                      'Create An Account',
+                      style: Theme.of(
+                        context,
+                      ).textTheme.headlineSmall?.copyWith(
+                        color: Theme.of(context).colorScheme.outline,
+                        fontWeight: FontWeight.w300,
+                        fontSize: 14,
+                      ),
+                    ),
                     TextButton(
                       onPressed: () {},
-                      child: Text('Sign Up', style: TextStyle(color: Colors.blue)),
+                      child: Text(
+                        'Sign Up',
+                        style: Theme.of(
+                          context,
+                        ).textTheme.headlineSmall?.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                        ),
+                      ),
                     ),
                   ],
                 ),
                 SizedBox(height: 10),
-                Text(
-                  'By clicking Continue, you agree to our Terms of Service and Privacy Policy',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'By clicking Continue, you agree to our ',
+                      textAlign: TextAlign.center,
+                      style: Theme.of(
+                        context,
+                      ).textTheme.headlineSmall?.copyWith(
+                        color: Theme.of(context).colorScheme.outline,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 10,
+                      ),
+                    ),
+                    Text(
+                      'Terms of Service',
+                      textAlign: TextAlign.center,
+                      style: Theme.of(
+                        context,
+                      ).textTheme.headlineSmall?.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 10,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'and ',
+                      style: Theme.of(
+                        context,
+                      ).textTheme.headlineSmall?.copyWith(
+                        color: Theme.of(context).colorScheme.outline,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 10,
+                      ),
+                    ),
+                    Text(
+                      'Privacy Policy',
+                      style: Theme.of(
+                        context,
+                      ).textTheme.headlineSmall?.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 10,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class SocialLoginButton extends StatelessWidget {
+  final String imagePath;
+  final String text;
+
+  SocialLoginButton({required this.imagePath, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        foregroundColor: Theme.of(context).colorScheme.primaryContainer,
+        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        side: BorderSide(color: Theme.of(context).colorScheme.primary),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      ),
+      onPressed: () {},
+      child: Row(
+        children: [
+          Image.asset(
+            imagePath,
+            height: 24,
+            width: 24,
+          ), // Adjust image size as needed
+          SizedBox(width: 8),
+          Text(text, style: TextStyle(color: Colors.black)),
+        ],
       ),
     );
   }
