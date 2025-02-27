@@ -90,13 +90,8 @@ class _LoginMobileState extends State<LoginMobile> {
                       ),
                       SizedBox(height: 20),
 
-<<<<<<< HEAD
-                  
-                   
 
-=======
                    
->>>>>>> f44d08cdf7cfcd40d23ed61d128074303c8b3ba4
                       SizedBox(
                         width: double.maxFinite,
                         height: MediaQuery.sizeOf(context).height * 0.06,
@@ -109,10 +104,6 @@ class _LoginMobileState extends State<LoginMobile> {
                                 ), // Rounded corners
                               ),
                             ),
-<<<<<<< HEAD
-=======
-
->>>>>>> f44d08cdf7cfcd40d23ed61d128074303c8b3ba4
                           ),
                           onPressed: () {},
                           child: const Text('LOG IN '),
