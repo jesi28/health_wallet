@@ -18,7 +18,7 @@ class _LoginMobileState extends State<LoginMobile> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
-      body: Center(
+      body: Center(  
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: SingleChildScrollView(
@@ -89,8 +89,13 @@ class _LoginMobileState extends State<LoginMobile> {
                         ],
                       ),
                       SizedBox(height: 20),
+<<<<<<< HEAD
 
                      
+=======
+                  
+                   
+>>>>>>> fcb8d55f66ffcc8217e161d7b6c3912c3f2ae7d5
                       SizedBox(
                         width: double.maxFinite,
                         height: MediaQuery.sizeOf(context).height * 0.06,
@@ -103,6 +108,10 @@ class _LoginMobileState extends State<LoginMobile> {
                                 ), // Rounded corners
                               ),
                             ),
+<<<<<<< HEAD
+=======
+
+>>>>>>> fcb8d55f66ffcc8217e161d7b6c3912c3f2ae7d5
                           ),
                           onPressed: () {},
                           child: const Text('LOG IN '),
@@ -245,7 +254,7 @@ class SocialLoginButton extends StatelessWidget {
   final String imagePath;
   final String text;
 
-  SocialLoginButton({required this.imagePath, required this.text});
+  const SocialLoginButton({super.key, required this.imagePath, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -255,18 +264,22 @@ class SocialLoginButton extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.primaryContainer,
         side: BorderSide(color: Theme.of(context).colorScheme.primary),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       ),
       onPressed: () {},
       child: Row(
+        mainAxisSize: MainAxisSize.min, // Ensures the button wraps content properly
         children: [
           Image.asset(
             imagePath,
             height: 24,
             width: 24,
-          ), // Adjust image size as needed
-          SizedBox(width: 8),
-          Text(text, style: TextStyle(color: Colors.black)),
+          ),
+          const SizedBox(width: 8),
+          Text(
+            text,
+            style: TextStyle(color: Theme.of(context).colorScheme.onSurface),
+          ),
         ],
       ),
     );
