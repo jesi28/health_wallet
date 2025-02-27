@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:login/common/constans.dart';
+import 'package:health_wallet/common/constants.dart';
+
 
 class UiHelper {
   UiHelper();
