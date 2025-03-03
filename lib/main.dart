@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:health_wallet/analysis/analysis_page.dart';
 import 'package:health_wallet/common/constants.dart';
 import 'package:health_wallet/common/ui_helper';
 import 'package:health_wallet/create_account/view/create_account_mobile.dart';
+
+import 'package:health_wallet/home/home_page.dart';
 import 'package:health_wallet/verification/verification.dart';
 import 'package:health_wallet/verification/verified_page.dart';
 
@@ -20,7 +23,7 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final GoRouter _router = GoRouter(
-    initialLocation: '/verified',
+    initialLocation: '/analysis',
     routes: [
       GoRoute(
         path: '/account',
@@ -38,6 +41,12 @@ class MyApp extends StatelessWidget {
       GoRoute(
         path: '/splash',
         builder: (context, state) => SplashScreenMobile(),
+      ),
+      GoRoute(path: '/home', builder: (context, state) => HomePage()),
+
+      GoRoute(
+        path: '/analysis',
+        builder: (context, state) => const AnalysisPage(),
       ),
     ],
   );
@@ -58,7 +67,7 @@ class MyApp extends StatelessWidget {
       routerConfig: _router,
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: uiHelper.themeData(Constants.themeConfig.DARK),
+      theme: uiHelper.themeData(Constants.themeConfig.LIGHT),
     );
   }
 }
