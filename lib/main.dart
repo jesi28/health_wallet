@@ -5,15 +5,15 @@ import 'package:health_wallet/analysis/analysis_page.dart';
 import 'package:health_wallet/common/constants.dart';
 import 'package:health_wallet/common/ui_helper.dart';
 import 'package:health_wallet/create_account/view/create_account_mobile.dart';
-<<<<<<< HEAD
+
 
 import 'package:health_wallet/home/home_page.dart';
-=======
+
 import 'package:health_wallet/goal/goal_page.dart';
 import 'package:health_wallet/jesi.dart';
 
 import 'package:health_wallet/onboarding/onboarding_screen.dart';
->>>>>>> b8bcbeb14e259cf5244ec29afb2abd9bb8ae43e0
+
 import 'package:health_wallet/verification/verification.dart';
 import 'package:health_wallet/verification/verified_page.dart';
 
@@ -30,12 +30,10 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final GoRouter _router = GoRouter(
-<<<<<<< HEAD
-    initialLocation: '/analysis',
-=======
-    initialLocation: '/walk',
->>>>>>> b8bcbeb14e259cf5244ec29afb2abd9bb8ae43e0
+    initialLocation: "/goal",
     routes: [
+
+        
       GoRoute(path: '/account', builder: (context, state) => CreateAccount()),
       GoRoute(path: '/goal', builder: (context, state) => GoalPage()),
 
@@ -56,19 +54,21 @@ class MyApp extends StatelessWidget {
         path: '/splash',
         builder: (context, state) => SplashScreenMobile(),
       ),
-<<<<<<< HEAD
+
       GoRoute(path: '/home', builder: (context, state) => HomePage()),
 
       GoRoute(
         path: '/analysis',
-        builder: (context, state) => const AnalysisPage(),
-=======
+        builder: (context, state) => const AnalysisPage(),),
+
       GoRoute(
         path: '/onboard',
         builder: (context, state) => OnboardingScreen(),
->>>>>>> b8bcbeb14e259cf5244ec29afb2abd9bb8ae43e0
       ),
-    ],
+
+    ]
+
+    
   );
   @override
   Widget build(BuildContext context) {
