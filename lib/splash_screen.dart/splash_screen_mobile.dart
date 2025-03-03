@@ -49,7 +49,7 @@ class _SplashScreenMobileState extends State<SplashScreenMobile> {
                     fontSize: 14,
                   ),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(height: 30,),
                 SizedBox(
                   width: 42,
                   height: 18,
