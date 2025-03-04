@@ -44,6 +44,10 @@ dependencies:
   fl_chart: ^0.70.2
 
   smooth_page_indicator: ^1.2.1
+<<<<<<< HEAD
+=======
+  numberpicker: ^2.1.2
+>>>>>>> 7ed0df3342be9e30f93303f85aa60f173bd7ad80
 
 dev_dependencies:
   flutter_test:
