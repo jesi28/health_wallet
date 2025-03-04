@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:numberpicker/numberpicker.dart';
 
-class   GoalPage extends StatefulWidget {
+class GoalPage extends StatefulWidget {
   const GoalPage({super.key});
 
   @override
   State<GoalPage> createState() => _GoalPageState();
 }
+
+int _selectedNumber = 1;
 
 class _GoalPageState extends State<GoalPage> {
   @override
@@ -48,22 +51,33 @@ class _GoalPageState extends State<GoalPage> {
               SizedBox(height: 30),
               Stack(
                 children: [
-                  Container(
-                    height: 80,
-                    width: 67,
-
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
+                  SizedBox(
+                    height: 85,
+                    width: 77,
                     child: Center(
-                      child: Text(
-                        '8',
-                        style: Theme.of(
-                          context,
-                        ).textTheme.headlineSmall?.copyWith(
-                          color: Theme.of(context).colorScheme.surface,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 70,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.primary,
+                           ),
+                        child: NumberPicker(
+                          infiniteLoop: true,
+                          value: _selectedNumber,
+                          minValue: 0,
+                          maxValue: 20,
+
+                          textStyle: TextStyle(
+                            fontSize: 65,
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.surface,
+                          ),
+                          itemHeight: 85,
+                          itemWidth: 77,
+                          axis: Axis.vertical,
+                          onChanged: (value) {
+                            setState(() {
+                              _selectedNumber = value;
+                            });
+                          },
                         ),
                       ),
                     ),
@@ -71,7 +85,7 @@ class _GoalPageState extends State<GoalPage> {
                   Positioned(
                     right: 0,
 
-                    child: Container(width: 3, height: 95, color: Colors.black),
+                    child: Container(width: 3, height: 80, color: Colors.black),
                   ),
                 ],
               ),
@@ -100,7 +114,12 @@ class _GoalPageState extends State<GoalPage> {
                       ) {
                         return DropdownMenuItem<String>(
                           value: value,
-                          child: Text(value),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              left: 10,
+                            ), // Adjust the space as needed
+                            child: Text(value),
+                          ),
                         );
                       }).toList(),
                   onChanged: (newValue) {
@@ -113,11 +132,12 @@ class _GoalPageState extends State<GoalPage> {
                   dropdownColor: Theme.of(context).colorScheme.surface,
                 ),
               ),
+
               const SizedBox(height: 60),
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                       color: Theme.of(context).colorScheme.surface,
+                    color: Theme.of(context).colorScheme.surface,
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(50),
                     ),
@@ -154,7 +174,7 @@ class WaterGoalBottomSheet extends StatelessWidget {
             width: 70,
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.primaryFixed,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(7),
             ),
           ),
           SizedBox(height: 10),
