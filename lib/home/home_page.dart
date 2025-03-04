@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:liquid_progress_indicator_v2/liquid_progress_indicator.dart';
 
 class HomePage extends StatefulWidget {
@@ -456,7 +457,9 @@ class _HomePageState extends State<HomePage> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                     GoRouter.of(context).push('/profile');
+                  },
                   child: Icon(Icons.person_2_outlined, size: 28),
                 ),
                 Text(

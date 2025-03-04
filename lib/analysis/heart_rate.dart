@@ -15,15 +15,15 @@ class HeartRateCard extends StatelessWidget {
         height: 340,
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-           boxShadow: [
-                        BoxShadow(
-                          // ignore: deprecated_member_use
-                          color: Colors.grey.withOpacity(0.2),
-                          blurRadius: 10,
-                          spreadRadius: 2,
-                          offset: const Offset(0, 5),
-                        ),
-                      ],
+          boxShadow: [
+            BoxShadow(
+              // ignore: deprecated_member_use
+              color: Colors.grey.withOpacity(0.2),
+              blurRadius: 10,
+              spreadRadius: 2,
+              offset: const Offset(0, 5),
+            ),
+          ],
           color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(16),
         ),
@@ -63,13 +63,7 @@ class HeartRateCard extends StatelessWidget {
             Container(
               width: double.infinity,
               height: 40,
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Colors.blue, Colors.white],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                ),
-              ),
+              decoration: BoxDecoration(color: Colors.transparent),
               child: CustomPaint(painter: GraphPainter()),
             ),
             const SizedBox(height: 10),
@@ -125,24 +119,48 @@ class HeartbeatPainter extends CustomPainter {
 class GraphPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final Paint paint =
+    Paint linePaint =
         Paint()
-          ..color = Colors.blue.shade700
+          ..color = Colors.blue
           ..strokeWidth = 2
           ..style = PaintingStyle.stroke;
 
-    final Path path =
-        Path()
-          ..moveTo(0, size.height * 0.8)
-          ..lineTo(size.width * 0.2, size.height * 0.5)
-          ..lineTo(size.width * 0.4, size.height * 0.7)
-          ..lineTo(size.width * 0.6, size.height * 0.3)
-          ..lineTo(size.width * 0.8, size.height * 0.6)
-          ..lineTo(size.width, size.height * 0.4);
+    Path graphPath = Path();
+    graphPath.moveTo(0, size.height * 0.6);
+    graphPath.lineTo(size.width * 0.1, size.height * 0.6); 
 
-    canvas.drawPath(path, paint);
+    graphPath.lineTo(size.width * 0.2, size.height * 0.1);
+    graphPath.lineTo(size.width * 0.3, size.height * 1);
+    graphPath.lineTo(size.width * 0.5, size.height * 0.01);
+    graphPath.lineTo(size.width * 0.7, size.height * 1.3);
+    graphPath.lineTo(size.width * 0.9, size.height * 0.1);
+
+    // End the graph with straight line
+    graphPath.lineTo(size.width, size.height * 0.6);
+
+    Path fillPath = Path.from(graphPath);
+    fillPath.lineTo(size.width, size.height);
+    fillPath.lineTo(0, size.height);
+    fillPath.close();
+
+    Paint gradientPaint =
+        Paint()
+          ..shader = LinearGradient(
+            colors: [
+              Colors.blue.withOpacity(0.5),
+              Colors.blue.withOpacity(0.0),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ).createShader(Rect.fromLTRB(0, 0, size.width, size.height));
+
+    // Draw Line
+    canvas.drawPath(graphPath, linePaint);
+
+    // Draw Gradient Fill
+    canvas.drawPath(fillPath, gradientPaint);
   }
 
   @override
-  bool shouldRepaint(CustomPainter oldDelegate) => false;
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

@@ -6,13 +6,12 @@ import 'package:health_wallet/common/constants.dart';
 import 'package:health_wallet/common/ui_helper.dart';
 import 'package:health_wallet/create_account/view/create_account_mobile.dart';
 
-
 import 'package:health_wallet/home/home_page.dart';
 
 import 'package:health_wallet/goal/goal_page.dart';
-import 'package:health_wallet/jesi.dart';
 
 import 'package:health_wallet/onboarding/onboarding_screen.dart';
+import 'package:health_wallet/profile/edit_profile_page.dart';
 
 import 'package:health_wallet/verification/verification.dart';
 import 'package:health_wallet/verification/verified_page.dart';
@@ -30,10 +29,8 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final GoRouter _router = GoRouter(
-    initialLocation: "/goal",
+    initialLocation: "/home",
     routes: [
-
-        
       GoRoute(path: '/account', builder: (context, state) => CreateAccount()),
       GoRoute(path: '/goal', builder: (context, state) => GoalPage()),
 
@@ -45,10 +42,7 @@ class MyApp extends StatelessWidget {
         path: '/verified',
         builder: (context, state) => const VerifiedPage(),
       ),
-        GoRoute(
-        path: '/walk',
-        builder: (context, state) => const HeartRateScreen(),
-      ),
+      GoRoute(path: '/profile', builder: (context, state) => EditProfilePage()),
       GoRoute(path: '/login', builder: (context, state) => const LoginMobile()),
       GoRoute(
         path: '/splash',
@@ -59,16 +53,14 @@ class MyApp extends StatelessWidget {
 
       GoRoute(
         path: '/analysis',
-        builder: (context, state) => const AnalysisPage(),),
+        builder: (context, state) => const AnalysisPage(),
+      ),
 
       GoRoute(
         path: '/onboard',
         builder: (context, state) => OnboardingScreen(),
       ),
-
-    ]
-
-    
+    ],
   );
   @override
   Widget build(BuildContext context) {
@@ -87,7 +79,7 @@ class MyApp extends StatelessWidget {
       routerConfig: _router,
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: uiHelper.themeData(Constants.themeConfig.LIGHT),
+      theme: uiHelper.themeData(Constants.themeConfig.DARK),
     );
   }
 }

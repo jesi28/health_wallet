@@ -36,212 +36,309 @@ class _AnalysispageState extends State<AnalysisPage> {
                     borderRadius: BorderRadius.circular(20),
                   ),
                   elevation: 5,
-                  child: Container(
-                    width: 180,
-                    height: 255,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
 
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          // ignore: deprecated_member_use
-                          color: Colors.grey.withOpacity(0.2),
-                          blurRadius: 10,
-                          spreadRadius: 2,
-                          offset: const Offset(0, 5),
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(20),
-                      color: Theme.of(context).colorScheme.surface,
-                    ),
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          top: 140,
-                          height: 259,
-                          width: 618,
-                          child: Image.asset(
-                            'assets/Vector 2.png',
-                            fit: BoxFit.cover,
+                    child: Container(
+                      width: 180,
+                      height: 255,
+
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            // ignore: deprecated_member_use
+                            color: Colors.grey.withOpacity(0.2),
+                            blurRadius: 10,
+                            spreadRadius: 2,
+                            offset: const Offset(0, 5),
                           ),
-                        ),
-                        Positioned(
-                          top: 130,
-                          height: 350,
-                          width: 410,
-
-                          child: Image.asset(
-                            'assets/Vector 1.png',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        SizedBox(height: 10),
-
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 14),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              SizedBox(height: 10),
-                              Text(
-                                'Water',
-                                style: Theme.of(
-                                  context,
-                                ).textTheme.titleLarge?.copyWith(
-                                  color:
-                                      Theme.of(context).colorScheme.onSurface,
-                                  fontWeight: FontWeight.w700,
-
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Positioned(
-                          height: 80,
-                          width: 120,
-                          top: 60,
-                          left: 30,
-                          child: BarChart(
-                            BarChartData(
-                              barGroups: [
-                                BarChartGroupData(
-                                  x: 1,
-                                  barRods: [
-                                    BarChartRodData(
-                                      toY: 12,
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                      width: 5,
-                                    ),
-                                  ],
-                                ),
-                                BarChartGroupData(
-                                  x: 2,
-                                  barRods: [
-                                    BarChartRodData(
-                                      toY: 9,
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                      width: 5,
-                                    ),
-                                  ],
-                                ),
-                                BarChartGroupData(
-                                  x: 3,
-                                  barRods: [
-                                    BarChartRodData(
-                                      toY: 6,
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                      width: 5,
-                                    ),
-                                  ],
-                                ),
-                                BarChartGroupData(
-                                  x: 4,
-                                  barRods: [
-                                    BarChartRodData(
-                                      toY: 4,
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                      width: 5,
-                                    ),
-                                  ],
-                                ),
-                                BarChartGroupData(
-                                  x: 5,
-                                  barRods: [
-                                    BarChartRodData(
-                                      toY: 10,
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                      width: 5,
-                                    ),
-                                  ],
-                                ),
-                                BarChartGroupData(
-                                  x: 6,
-                                  barRods: [
-                                    BarChartRodData(
-                                      toY: 10,
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                      width: 5,
-                                    ),
-                                  ],
-                                ),
-                                BarChartGroupData(
-                                  x: 7,
-                                  barRods: [
-                                    BarChartRodData(
-                                      toY: 8,
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                      width: 5,
-                                    ),
-                                  ],
-                                ),
-                                BarChartGroupData(
-                                  x: 8,
-                                  barRods: [
-                                    BarChartRodData(
-                                      toY: 5,
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                      width: 5,
-                                    ),
-                                  ],
-                                ),
-                              ],
-                              borderData: FlBorderData(show: false),
-                              gridData: FlGridData(show: false),
-                              titlesData: FlTitlesData(show: false),
+                        ],
+                        borderRadius: BorderRadius.circular(20),
+                        color: Theme.of(context).colorScheme.surface,
+                      ),
+                      child: Stack(
+                        children: [
+                          Positioned(
+                            top: 140,
+                            height: 259,
+                            width: 618,
+                            child: Image.asset(
+                              'assets/Vector 2.png',
+                              fit: BoxFit.cover,
                             ),
                           ),
-                        ),
-                        Positioned(
-                          top: 140,
-                          left: 30,
-                          width: 120,
-                          child: Container(
-                            height: 2,
-                            color: Theme.of(context).colorScheme.outlineVariant,
-                          ),
-                        ),
-                        Positioned(
-                          top: 220,
-                          left: 20,
-                          child: Row(
-                            children: [
-                              Text(
-                                "2.1",
-                                style: Theme.of(
-                                  context,
-                                ).textTheme.labelLarge?.copyWith(
-                                  color: Theme.of(context).colorScheme.surface,
-                                  fontWeight: FontWeight.w600,
+                          Positioned(
+                            top: 130,
+                            height: 350,
+                            width: 410,
 
-                                  fontSize: 20,
-                                ),
-                              ),
-                              SizedBox(width: 10),
-                              Text(
-                                "liters",
-                                style: Theme.of(
-                                  context,
-                                ).textTheme.labelLarge?.copyWith(
-                                  color: Theme.of(context).colorScheme.surface,
-                                  fontWeight: FontWeight.w600,
-
-                                  fontSize: 15,
-                                ),
-                              ),
-                            ],
+                            child: Image.asset(
+                              'assets/Vector 1.png',
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                      ],
+                          SizedBox(height: 10),
+
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 14),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 10),
+                                Text(
+                                  'Water',
+                                  style: Theme.of(
+                                    context,
+                                  ).textTheme.titleLarge?.copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.onSurface,
+                                    fontWeight: FontWeight.w700,
+
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Positioned(
+                            height: 80,
+                            width: 110,
+                            top: 60,
+                            left: 30,
+                            child: BarChart(
+                              BarChartData(
+                                alignment: BarChartAlignment.spaceBetween,
+
+                                barGroups: [
+                                  BarChartGroupData(
+                                    x: 0,
+                                    barRods: [
+                                      BarChartRodData(
+                                        toY: 15,
+                                        width: 6,
+                                        color:
+                                            Theme.of(
+                                              context,
+                                            ).colorScheme.outlineVariant,
+                                        rodStackItems: [
+                                          BarChartRodStackItem(
+                                            0,
+                                            8,
+                                            Theme.of(
+                                              context,
+                                            ).colorScheme.primary,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  BarChartGroupData(
+                                    x: 1,
+                                    barRods: [
+                                      BarChartRodData(
+                                        toY: 15,
+                                        width: 6,
+                                        color:
+                                            Theme.of(
+                                              context,
+                                            ).colorScheme.outlineVariant,
+                                        rodStackItems: [
+                                          BarChartRodStackItem(
+                                            0,
+                                            6,
+                                            Theme.of(
+                                              context,
+                                            ).colorScheme.primary,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  BarChartGroupData(
+                                    x: 2,
+                                    barRods: [
+                                      BarChartRodData(
+                                        toY: 15,
+                                        width: 6,
+                                        color:
+                                            Theme.of(
+                                              context,
+                                            ).colorScheme.outlineVariant,
+                                        rodStackItems: [
+                                          BarChartRodStackItem(
+                                            0,
+                                            10,
+                                            Theme.of(
+                                              context,
+                                            ).colorScheme.primary,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  BarChartGroupData(
+                                    x: 3,
+                                    barRods: [
+                                      BarChartRodData(
+                                        toY: 15,
+                                        width: 6,
+                                        color:
+                                            Theme.of(
+                                              context,
+                                            ).colorScheme.outlineVariant,
+                                        rodStackItems: [
+                                          BarChartRodStackItem(
+                                            0,
+                                            13,
+                                            Theme.of(
+                                              context,
+                                            ).colorScheme.primary,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  BarChartGroupData(
+                                    x: 4,
+                                    barRods: [
+                                      BarChartRodData(
+                                        toY: 15,
+                                        width: 6,
+                                        color:
+                                            Theme.of(
+                                              context,
+                                            ).colorScheme.outlineVariant,
+                                        rodStackItems: [
+                                          BarChartRodStackItem(
+                                            0,
+                                            7,
+                                            Theme.of(
+                                              context,
+                                            ).colorScheme.primary,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  BarChartGroupData(
+                                    x: 5,
+                                    barRods: [
+                                      BarChartRodData(
+                                        toY: 15,
+                                        width: 6,
+                                        color:
+                                            Theme.of(
+                                              context,
+                                            ).colorScheme.outlineVariant,
+                                        rodStackItems: [
+                                          BarChartRodStackItem(
+                                            0,
+                                            5,
+                                            Theme.of(
+                                              context,
+                                            ).colorScheme.primary,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  BarChartGroupData(
+                                    x: 6,
+                                    barRods: [
+                                      BarChartRodData(
+                                        toY: 15,
+                                        width: 6,
+                                        color:
+                                            Theme.of(
+                                              context,
+                                            ).colorScheme.outlineVariant,
+                                        rodStackItems: [
+                                          BarChartRodStackItem(
+                                            0,
+                                            0,
+                                            Theme.of(
+                                              context,
+                                            ).colorScheme.primary,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  BarChartGroupData(
+                                    x: 7,
+                                    barRods: [
+                                      BarChartRodData(
+                                        toY: 15,
+                                        width: 6,
+                                        color:
+                                            Theme.of(
+                                              context,
+                                            ).colorScheme.outlineVariant,
+                                        rodStackItems: [
+                                          BarChartRodStackItem(
+                                            0,
+                                            0,
+                                            Theme.of(
+                                              context,
+                                            ).colorScheme.primary,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                                borderData: FlBorderData(show: false),
+                                gridData: FlGridData(show: false),
+                                titlesData: FlTitlesData(show: false),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 140,
+                            left: 23,
+                            width: 125,
+                            child: Container(
+                              height: 2,
+                              color:
+                                  Theme.of(context).colorScheme.outlineVariant,
+                            ),
+                          ),
+                          Positioned(
+                            top: 220,
+                            left: 20,
+                            child: Row(
+                              children: [
+                                Text(
+                                  "2.1",
+                                  style: Theme.of(
+                                    context,
+                                  ).textTheme.labelLarge?.copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.surface,
+                                    fontWeight: FontWeight.w600,
+
+                                    fontSize: 20,
+                                  ),
+                                ),
+                                SizedBox(width: 10),
+                                Text(
+                                  "liters",
+                                  style: Theme.of(
+                                    context,
+                                  ).textTheme.labelLarge?.copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.surface,
+                                    fontWeight: FontWeight.w600,
+
+                                    fontSize: 15,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -336,15 +433,15 @@ class _AnalysispageState extends State<AnalysisPage> {
                     SizedBox(height: 10),
                     Container(
                       decoration: BoxDecoration(
-                         boxShadow: [
-                        BoxShadow(
-                          // ignore: deprecated_member_use
-                          color: Colors.grey.withOpacity(0.2),
-                          blurRadius: 10,
-                          spreadRadius: 2,
-                          offset: const Offset(0, 5),
-                        ),
-                      ],
+                        boxShadow: [
+                          BoxShadow(
+                            // ignore: deprecated_member_use
+                            color: Colors.grey.withOpacity(0.2),
+                            blurRadius: 10,
+                            spreadRadius: 2,
+                            offset: const Offset(0, 5),
+                          ),
+                        ],
                       ),
                       child: Card(
                         color: Theme.of(context).colorScheme.surface,
@@ -368,24 +465,25 @@ class _AnalysispageState extends State<AnalysisPage> {
                                     color:
                                         Theme.of(context).colorScheme.onSurface,
                                     fontWeight: FontWeight.w700,
-                      
+
                                     fontSize: 20,
                                   ),
                                 ),
-                      
+
                                 SizedBox(height: 35),
                                 Text(
                                   "08:00",
                                   style: Theme.of(
                                     context,
                                   ).textTheme.labelLarge?.copyWith(
-                                    color: Theme.of(context).colorScheme.primary,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
                                     fontWeight: FontWeight.w500,
-                      
+
                                     fontSize: 25,
                                   ),
                                 ),
-                      
+
                                 Text(
                                   "hours",
                                   style: Theme.of(
@@ -394,7 +492,7 @@ class _AnalysispageState extends State<AnalysisPage> {
                                     color:
                                         Theme.of(context).colorScheme.onSurface,
                                     fontWeight: FontWeight.w600,
-                      
+
                                     fontSize: 14,
                                   ),
                                 ),
