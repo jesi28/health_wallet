@@ -1,25 +1,18 @@
 import 'package:flutter/material.dart';
-
 import 'package:go_router/go_router.dart';
 import 'package:health_wallet/analysis/analysis_page.dart';
 import 'package:health_wallet/common/constants.dart';
 import 'package:health_wallet/common/ui_helper.dart';
 import 'package:health_wallet/create_account/view/create_account_mobile.dart';
-
-
+import 'package:health_wallet/drink_water/drink_water.dart';
 import 'package:health_wallet/home/home_page.dart';
-
 import 'package:health_wallet/goal/goal_page.dart';
-import 'package:health_wallet/jesi.dart';
-
 import 'package:health_wallet/onboarding/onboarding_screen.dart';
-
+import 'package:health_wallet/result/result_page.dart';
 import 'package:health_wallet/verification/verification.dart';
 import 'package:health_wallet/verification/verified_page.dart';
-
 import 'package:health_wallet/login/views/login_mobile.dart';
 import 'package:health_wallet/splash_screen.dart/splash_screen_mobile.dart';
-
 import 'package:responsive_framework/responsive_framework.dart';
 
 void main() {
@@ -30,13 +23,12 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final GoRouter _router = GoRouter(
-    initialLocation: "/goal",
+    initialLocation: "/result",
     routes: [
-
-        
+      GoRoute(path: '/drinkwater', builder: (context, state) => DrinkWater()),
       GoRoute(path: '/account', builder: (context, state) => CreateAccount()),
       GoRoute(path: '/goal', builder: (context, state) => GoalPage()),
-
+      GoRoute(path: '/result', builder: (context, state) => const ResultPage()),
       GoRoute(
         path: '/verify',
         builder: (context, state) => const VerificationPage(),
@@ -45,10 +37,7 @@ class MyApp extends StatelessWidget {
         path: '/verified',
         builder: (context, state) => const VerifiedPage(),
       ),
-        GoRoute(
-        path: '/walk',
-        builder: (context, state) => const HeartRateScreen(),
-      ),
+
       GoRoute(path: '/login', builder: (context, state) => const LoginMobile()),
       GoRoute(
         path: '/splash',
@@ -59,16 +48,14 @@ class MyApp extends StatelessWidget {
 
       GoRoute(
         path: '/analysis',
-        builder: (context, state) => const AnalysisPage(),),
+        builder: (context, state) => const AnalysisPage(),
+      ),
 
       GoRoute(
         path: '/onboard',
         builder: (context, state) => OnboardingScreen(),
       ),
-
-    ]
-
-    
+    ],
   );
   @override
   Widget build(BuildContext context) {
@@ -87,7 +74,7 @@ class MyApp extends StatelessWidget {
       routerConfig: _router,
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: uiHelper.themeData(Constants.themeConfig.LIGHT),
+      theme: uiHelper.themeData(Constants.themeConfig.DARK),
     );
   }
 }
